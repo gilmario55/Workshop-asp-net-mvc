@@ -40,13 +40,13 @@ namespace SalesWebMvc.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int?>("SallerId");
+                    b.Property<int?>("SellerId");
 
                     b.Property<int>("Status");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SallerId");
+                    b.HasIndex("SellerId");
 
                     b.ToTable("SalesRecord");
                 });
@@ -70,20 +70,20 @@ namespace SalesWebMvc.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Saller");
+                    b.ToTable("Seller");
                 });
 
             modelBuilder.Entity("SalesWebMvc.Models.SalesRecord", b =>
                 {
-                    b.HasOne("SalesWebMvc.Models.Saller", "Saller")
+                    b.HasOne("SalesWebMvc.Models.Seller", "Seller")
                         .WithMany("Sales")
-                        .HasForeignKey("SallerId");
+                        .HasForeignKey("SellerId");
                 });
 
-            modelBuilder.Entity("SalesWebMvc.Models.Saller", b =>
+            modelBuilder.Entity("SalesWebMvc.Models.Seller", b =>
                 {
                     b.HasOne("SalesWebMvc.Models.Department", "Department")
-                        .WithMany("Sallers")
+                        .WithMany("Sellers")
                         .HasForeignKey("DepartmentId");
                 });
 #pragma warning restore 612, 618
